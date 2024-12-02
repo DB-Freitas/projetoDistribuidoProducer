@@ -1,15 +1,22 @@
-package computacao.paralela.produtor11;
+package computacao.paralela.produtor11.dto;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.io.Serializable;
+import java.util.Date;
 
+@Entity
 public class Dados implements Serializable {
 
+    @Id
     private Integer id;
-    private String data;
+    private Date data;
+    private Integer tipoCafeColhido;
     private Double quantidadeColhida;
     private Double produtividade;
-    private String qualidade;
+    private Integer cooperativaId;
 
     public Dados() {
     }
@@ -19,18 +26,20 @@ public class Dados implements Serializable {
         return "Dados{" +
                 "id=" + id +
                 ", data='" + data + '\'' +
+                ", tipoCafeColhido=" + tipoCafeColhido +
                 ", quantidadeColhida=" + quantidadeColhida +
                 ", produtividade=" + produtividade +
-                ", qualidade='" + qualidade + '\'' +
+                ", CooperativaId='" + cooperativaId + '\'' +
                 '}';
     }
 
-    public Dados(int id, String data, double quantidadeColhida, double produtividade, String qualidade) {
+    public Dados(int id, Date data, int tipoCafeColhido, double quantidadeColhida, double produtividade, int cooperativaId) {
         this.id = id;
         this.data = data;
+        this.tipoCafeColhido = tipoCafeColhido;
         this.quantidadeColhida = quantidadeColhida;
         this.produtividade = produtividade;
-        this.qualidade = qualidade;
+        this.cooperativaId = cooperativaId;
     }
 
     public int getId() {
@@ -41,13 +50,15 @@ public class Dados implements Serializable {
         this.id = id;
     }
 
-    public String getData() {
-        return data;
-    }
+    public Date getData() { return data; }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
+
+    public int getTipoCafeColhido() {return tipoCafeColhido;}
+
+    public void setTipoCafeColhido(int tipoCafeColhido) {this.tipoCafeColhido = tipoCafeColhido;}
 
     public double getQuantidadeColhida() {
         return quantidadeColhida;
@@ -65,11 +76,11 @@ public class Dados implements Serializable {
         this.produtividade = produtividade;
     }
 
-    public String getQualidade() {
-        return qualidade;
+    public int getCooperativaId() {
+        return cooperativaId;
     }
 
-    public void setQualidade(String qualidade) {
-        this.qualidade = qualidade;
+    public void setCooperativaId(int cooperativaId) {
+        this.cooperativaId = cooperativaId;
     }
 }
